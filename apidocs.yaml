@@ -1,0 +1,174 @@
+openapi: 3.0.0
+info:
+  title: Exercise_Swagger_Kelompok3
+  description: Ini description API
+  contact: 
+    email: Kelompok3@rocketmail.com
+  version: '1.0'
+servers:
+  - url: http://localhost:5000/v1/api
+    variables: {}
+paths:
+  /books:
+    get:
+      tags:
+        - Misc
+      summary: Get Books
+      operationId: GetBooks
+      parameters: []
+      responses:
+        '200':
+          description: Success
+          headers: {}
+        '500':
+          description: Server error
+          headers: {}
+      deprecated: false
+    post:
+      tags:
+        - Misc
+      summary: Add Books
+      operationId: AddBooks
+      parameters: []
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            encoding: {}
+            schema:
+              required:
+                - title
+                - description
+                - author
+                - price
+              type: object
+              properties:
+                title:
+                  type: string
+                  example: coding is art
+                description:
+                  type: string
+                  example: all of power
+                author:
+                  type: string
+                  example: Kelompok1
+                price:
+                  type: integer
+                  example: 900000
+        required: false
+      responses:
+        '200':
+          description: Success
+          headers: {}
+        '500':
+          description: Server error
+          headers: {}
+      deprecated: false
+  /books/{id}:
+    get:
+      tags:
+        - Misc
+      summary: Get Books By Id
+      operationId: GetBooksById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+      responses:
+        '200':
+          description: Success
+          headers: {}
+        '500':
+          description: Server error
+          headers: {}
+      deprecated: false
+  /books/{id_books}:
+    put:
+      tags:
+        - Misc
+      summary: Update Books
+      operationId: UpdateBooks
+      parameters:
+        - name: id_books
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            encoding: {}
+            schema:
+              required:
+                - title
+                - description
+                - author
+                - price
+              type: object
+              properties:
+                title:
+                  type: string
+                  example: Mengupdate title
+                description:
+                  type: string
+                  example: menceritakan tentang percintaan mereka
+                author:
+                  type: string
+                  example: Kelompok 3
+                price:
+                  type: integer
+                  format: int32
+                  example: 50000
+        required: false
+      responses:
+        '200':
+          description: Success
+          headers: {}
+        '500':
+          description: Server error
+          headers: {}
+      deprecated: false
+    delete:
+      tags:
+        - Misc
+      summary: Delete Book
+      operationId: DeleteBook
+      parameters:
+        - name: id_books
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+      responses:
+        '200':
+          description: Success
+          headers: {}
+        '500':
+          description: Server error
+          headers: {}
+      deprecated: false
+  /:
+    get:
+      tags:
+        - Misc
+      summary: Default Page
+      operationId: Default Page
+      parameters: []
+      responses:
+        '200':
+          description: Success
+          headers: {}
+        '500':
+          description: Server error
+          headers: {}
+      deprecated: false
+tags:
+  - name: Misc
+    description: ''
